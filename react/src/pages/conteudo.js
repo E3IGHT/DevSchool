@@ -11,7 +11,7 @@ import React, { useRef } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 
 import Api from "../services/api"
-const api = new Api();
+const api = new Api(); 
 
 
 export default function Conteudo () {
