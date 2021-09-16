@@ -25,6 +25,11 @@ app.post ('/produto', async (req, resp) => {
                    return resp.send( { erro: 'Todos os campos são obrigatórios.'} )
                }
 
+        if(nome == null || categoria == null || precode == null || precopor == null || avaliacao == null
+               || descricao == null || estoque == null || imagem == null ) {
+                   return resp.send( { erro: 'Todos os campos são obrigatórios.'} )
+               }
+
         if(isNaN(estoque) || isNaN(precode) || isNaN(precopor) || isNaN(avaliacao)) {
                 return resp.send( { erro: 'Os campos estoque, preço de, preço por e avaliação precisam ser campos numéricos.'} )
             }
@@ -81,7 +86,7 @@ app.put('/produto/:id', async (req,resp) => {
         let d = await db.tb_produto.findOne( { where: { nm_produto: nome } } );
         
         if( d != null ) {
-            if( d.id_produto != a )
+            if( d.id_produto == a )
             return resp.send( {erro: 'Não podem existir produtos com o mesmo nome.'} )
         }
 
